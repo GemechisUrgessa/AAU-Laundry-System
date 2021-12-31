@@ -20,3 +20,13 @@ Users signing up for the system will be verified to ensure that they are student
  The system will provide notification for the users when their laundry is done.
  The users can provide comments and suggestions.
  The admin is the one with the full credentials to create, update and delete data from the database. 
+
+#Group members:-
+Name                            ID                            Section
+1. MELAT ERMIYAS            UGR/8994/12                      Section 3
+2. GETNET   ADUGNA          UGR/3381/12                      Section 3
+3. ZEAMANUAL FELEKE         UGR/8657/12                      Section 3
+4. GEMECHIS URGESSA         UGR/7128/12                      Section 3
+5. ZENAMARKOS MOLLA         UGR/4176/12                      Section 3
+
+
