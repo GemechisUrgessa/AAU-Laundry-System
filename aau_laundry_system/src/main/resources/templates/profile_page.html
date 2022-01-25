@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container-fluid">
+       <form th:action = "@{/profile/update}" method = "POST">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                   <div class="card-body">
+                      <div class="row">
+                         <div class="col">
+                          <img class="rounded mx-auto d-block" width="160px" th:src="@{/images/userprofile.png}"/>
+                         </div>
+                      </div>
+                      <div class="row text-center">
+                         <div class="col">
+                          <h3 th:text="${user.firstName}"></h3>
+                                    </div>
+                      </div>
+                      <div class="row">
+                         <div class="col">
+                            <hr>
+                         </div>
+                      </div>
+                      <div class="row">
+                         <div class="col-md-6">
+                            <label class="form-label">Name</label>
+                            <div >
+                              <input class="form-control" ID="TextBox1" th:field="${user.firstName}" placeholder="User Name"></input>
+                              </div>
+                         </div>
+                         <div class="col-md-6">
+                            <label class="form-label">Student ID</label>
+                            <div>
+                               <p Class="form-control" ID="TextBox2" th:text="${user.username}"placeholder="Student Id" type="text"></p>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="row">
+                         <div class="col-md-6">
+                            <label class="form-label">Phone Number</label>
+                            <div>
+                               <input Class="form-control" ID="TextBox3" th:field="${user.phoneNumber}" placeholder="Phone No" type="text"></input>
+                            </div>
+                         </div>
+                         <div class="col-md-6">
+                           <label class="form-label">Email</label>
+                           <div>
+                              <input Class="form-control" ID="TextBox3" th:field="${user.email}" placeholder="Phone No" type="text"></input>
+                           </div>
+                        </div>
+                      </div>
+                      <div class="row ">
+                         <div class="col text-center">
+                           <h3>
+                              <span class="badge rounded-pill bg-light text-dark">Login Credentials</span>
+                           </h3>  
+                         </div>
+                      </div>
+                      <div class="row">
+                         <!-- <div class="col-md-4">
+                            <label class="form-label">Member ID</label>
+                            <div class="form-control">
+                               <input class="form-control" ID="TextBox8" placeholder="member ID"></input>
+                            </div>
+                         </div> -->
+                         <div class="col-md-6">
+                           <label class="form-label">Phone Number</label>
+                           <div>
+                              <input Class="form-control" ID="TextBox3" th:field="${user.phoneNumber}" placeholder="Phone No" type="text"></input>
+                           </div>
+                        </div>
+
+                     </div>
+                      <div class="row">
+                          <div class="col-8 mx-auto">
+                             <div class="form-control text-center ">
+                                    <button type="submit" class="btn btn-block btn-primary">Update</button> 
+                             </div>
+                             <form action="@{/profile/delete}" method="DELETE">
+                             <div class="form-control text-center">
+                              <!-- <a th:href= "@{/profile/deltete}" class="btn btn-danger">Delete Account</a>      -->
+                             <input type="submit" value="Delete">
+                           </form>                          
+                           </div>
+                           
+                          </div>
+                       </div>   
+                   </div>
+                </div>              
+            </div>
+         </form>
+     
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                            <img class="rounded mx-auto d-block" width="400px" th:src="@{/images/laundariedCloth.jpg}"/>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                             <h3>Current and Past Laundary delivery Reports</h3>
+                            </div>
+                         </div>
+                         <div class="row">
+                            <div class="col">
+                               <hr>
+                            </div>
+                         </div>
+                         <div class="row">
+                             <div class="col">
+                                 <table class="table table-striped table-hover">
+                                    <thead>
+                                       <tr>
+                                          <th scope="col">#</th>
+                                         <th scope="col">Order Date</th>
+                                         <th scope="col">Number of Clothes</th>
+                                       </tr>
+                                     </thead>
+                                     <tbody>
+                                       <tr th:each= "order: ${order}">
+                                          <th scope="row" th:text = "${order.id}"></th>
+                                          <td th:text = "${order.date}">25/11/2021</td>
+                                          <td th:text = "${order.quantity}">19</td>
+                                        </tr>
+                                     </tbody>
+                                 </table>
+                             </div>
+                         </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

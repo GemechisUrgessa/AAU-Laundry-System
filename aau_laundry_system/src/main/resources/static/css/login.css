@@ -1,0 +1,8 @@
+/* @media screen and (max-width: 990px){
+   .img-fluid{
+       max-height: 600px;
+   }
+} */
+.bg-nav{
+    background-color: rgb(172, 205, 238);
+}

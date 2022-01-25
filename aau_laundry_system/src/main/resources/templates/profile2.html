@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/tg.ico">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <title>User Profile</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100" style="overflow-x:hidden; width: 100%;">
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: rgb(172, 205, 238);">
+        <div class="container-fluid ">
+            <a class="navbar-brand mx-2" href="#"><img src="images/image3.svg" alt="Laundry logo"></a>
+            <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon pb-lg-2 "></span>
+            </button>
+        <div class="collapse navbar-collapse mt-3 container-fluid" id="navbarTogglerDemo01">
+            <ul class="nav nav-tabs nav-pills navbar-nav me-auto mb-4 mb-lg-0 ms-auto" style="width: auto;">
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action btn btn-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" href="#" >Register</a>
+                </li>
+              </ul>
+                <button class="btn btn-outline-primary  text-dark " type="submit">Log in</button>
+        </div>
+        </div>
+    </nav></header>
+    <main>
+  
+    <div class="container-fluid" style="max-width: 1500px;">
+    <h2 class="text-secondary mb-4">Profile</h2>
+    <div class="row mb-3">
+         <div class="col-lg-4">
+            <div class="card mb-3">
+                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="dogs/image2.jpeg" width="160" height="160" />
+                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
+                </div>
+            </div>
+            <div class="card shadow mb-4 my-3">
+    <div class="card-header py-3">
+        <h6 class="text-primary fw-bold m-0">Delivery Reports</h6>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-hover">
+            <thead>
+               <tr>
+                  <th scope="col">#</th>
+                 <th scope="col">Order Date</th>
+                 <th scope="col">Number of Clothes</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr th:each= "order: ${order}">
+                  <th scope="row" th:text = "${order.id}"></th>
+                  <td th:text = "${order.date}"></td>
+                  <td th:text = "${order.quantity}">19</td>
+                </tr>
+             </tbody>
+         </table>
+        </div>
+    </div>
+
+            <div class="card shadow mb-4"></div>
+         </div>
+        
+        <div class="col-lg-8">
+            <div class="row mb-3">
+                <!-- <div class="col">
+                    <div class="card textwhite bg-primary text-white shadow">
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <p class="m-0">Performance</p>
+                                    <p class="m-0"><strong>65.2%</strong></p>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                            </div>
+                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i> 5% since last month</p>
+                        </div>
+                    </div> -->
+                <!-- </div> -->
+                <div class="col">
+                    <div class="card textwhite bg-light text-white shadow">
+                        <div class="card-body mx-auto">
+                            <button type="button" class="btn btn-danger">DELETE ACCOUNT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">User Settings</p>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col" style="min-width: 270px">
+                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input id="first_name" th:field="${user.firstName}" class="form-control" type="text" placeholder="John" name="first_name" /></div>
+                                        </div>
+                                        <div class="col" style="min-width: 270px">
+                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input id="last_name" th:field="${user.lastName}"  class="form-control" type="text" placeholder="Doe" name="last_name" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="min-width: 270px">
+                                        <div class="mb-3"><label class="form-label" for="Student ID"><strong>Student ID</strong></label><input id="Student ID" class="form-control" type="text" th:field="${user.username}" placeholder="UGR/78..." name="username" /></div>
+                                    </div>
+                                    <div class="col" style="min-width: 270px">
+                                        <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input id="email" th:field="${user.email}" class="form-control" type="email" placeholder="user@example.com" name="email" /></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                  <div class="col" style="min-width: 270px; max-width: 480px;">
+                                        <div class="mb-3"><label class="form-label" for="phone"><strong>Phone Number</strong></label><input id="phone" th:field="${user.phoneNumber}"class="form-control" type="tel" placeholder="+251..." name="phone" /></div>
+                                    </div>
+                                </div>
+                                 <div class="mb-3"><label class="form-label" for="password"><strong>Old Password</strong></label><input id="password" class="form-control" type="password" placeholder="*****" name="password" /></div>
+                                <div class="row">
+                                    <div class="col">
+                                      <div class="mb-3"><label class="form-label" for="password"><strong>New Password</strong></label><input id="password" class="form-control" type="password" placeholder="*****" name="password" /></div>
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">UPDATE</button></div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow mb-5"></div>
+</div>
+
+
+    <!-- ........................................................................ -->
+    </main>
+    <footer class="mt-auto" style="background-color: rgb(172, 205, 238);">
+      <div class="container-fluid">
+      <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fab fa-facebook"></i></a>
+          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fab fa-telegram"></i></a>
+          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fas fa-envelope"></i></a>
+          <a class="fs-2 p-3  text-secondary btn btn-link" href="#"><i class="fab fa-instagram-square"></i></a>
+      </div>
+      <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+        <div class="d-flex flex-column col-auto">
+          <p class="col-auto" ><a class="text-dark list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p>
+          <p class="col-auto"><a class="text-dark list-group-item-action rounded-pill btn btn-link"href="#">Contact Us</a></p>
+        </div> <div class="d-flex flex-column col-auto">
+          <p class="col-auto"><a class="text-dark list-group-item-action rounded-pill btn btn-link"href="#">Privacy</a></p>
+          <p class="col-auto"><a class="text-dark list-group-item-action rounded-pill btn btn-link" href="#">Terms</a></p>
+      </div></div>
+      <p class="text-center pl-6 text-dark mt-1">Copyright &copy; 2022 Rinse, Inc. All Rights Reserved</p>
+  </div>
+  </footer>
+    <script src="https://kit.fontawesome.com/0605e8c2de.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+   

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <title>Order</title>
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <form th:action="@{/order}" method="POST">
+        <h1 class="text-info">Order submit form</h1>
+        <div class="row">
+            <div class="col-lg-6">
+             <h2 class="mt-5 text-primary">Select cloth type</h2>
+                <div th:each = "cloth:${clothes}"  class="shadow p-3 mb-5 bg-white rounded">
+                            <div class="d-flex justify-content-center">
+                                <span th:text = "${cloth.category}" class="m-3"></span> <p th:text = "${cloth.washPrice}" class="m-3"></p>
+                            </div>
+                            <div  class="d-flex justify-content-center">
+                                <label id="basic-addon1" class="m-3">Quantity:</label>
+                                <input type="number" th:name="value" class="col-sm-1 m-3"aria-label="email" aria-describedby="basic-addon1" for="basic-addon1" min="0" step="1" oninput="validity.valid||(value='');">
+                            </div>
+                </div>      
+             </div>
+            
+             
+            <div class="col-lg-6">
+              <h2 class="mt-5 text-primary">Fill delivery details</h2>
+              <div class="shadow p-3 mb-5 bg-white rounded">
+              <div  th:object = "${order}"class="d-flex justify-content-center">
+                <label id="basic-addon1" class="m-3">Doorm Block Number:</label>
+                <input type="text" th:field = "*{doormBlockNumber}" class="col-sm-1 m-3"aria-label="email" aria-describedby="basic-addon1" for="basic-addon1" min="0" step="1" oninput="validity.valid||(value='');">
+            </div></div>
+            <div class="shadow p-3 mb-5 bg-white rounded">
+            <div th:object = "${order}" class="d-flex justify-content-center">
+                <label id="basic-addon1" class="m-3">Dorm Room number:</label>
+                <input type="text" th:field = "*{doormNumber}" class="col-sm-1 m-3"aria-label="email" aria-describedby="basic-addon1" for="basic-addon1" min="0" step="1" oninput="validity.valid||(value='');">
+            </div></div>
+            <div class="shadow p-3 mb-5 bg-white rounded">
+            <div th:object = "${order}"class="d-flex justify-content-center">
+                <label id="basic-addon1" class="m-3">Pick a time to get your wahsed clothes delivered</label>
+                 <select th:field= "*{deliveryTime}" class = 'form-contro'>
+                     <option th:each = " time: ${times}" th:text = "${time}" th:value="${time}"></option>
+                   </select>
+            </div></div>
+            </div>
+        
+          </div>
+          <div class="row">
+              <div class="text-center">
+                <input type="submit" class="btn my-4 btn-warning btn-lg-5 btn-block col-4"></b>
+              </div>
+            
+          </div>
+          
+        </form>
+    </div>
+    </div>
+    
+</body>
+</html>
