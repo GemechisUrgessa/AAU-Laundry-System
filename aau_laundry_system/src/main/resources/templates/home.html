@@ -10,7 +10,7 @@
 <body class="d-flex flex-column min-vh-100" style="overflow-x:hidden; ">
     <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: #c8d8e4;">
         <div class="container-fluid ">
-            <a class="navbar-brand mx-2" href="#"><img class='img-fluid rounded-circle' style="width:60px" th:src="@{images/logo.svg}" alt="Laundry logo"></a>
+            <a class="navbar-brand mx-2" th:href="@{/}"><img class='img-fluid rounded-circle' style="width:60px" th:src="@{images/logo.svg}" alt="Laundry logo"></a>
             <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon pb-lg-2 "></span>
             </button>
@@ -22,9 +22,11 @@
                 <li class="nav-item mx-3">
                   <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/profile}" >Profile</a>
                 </li>
+                <div th:if="${status}=='signedout'">
                 <li class="nav-item mx-3">
                   <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/sign-up}"  >Register</a>
                 </li>
+              </div>
                 <li class="nav-item mx-3">
                   <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/order}" >order</a>
                 </li>
@@ -42,9 +44,6 @@
     
                   </div>
                   <a th:href="@{\logout}"><button class="btn btn-outline-primary  text-dark " type="button">Logout</button></a>
-
-
-
                 </div>
                 <a th:case="signedout" th:href="@{\login}"><button class="btn btn-outline-primary  text-dark " type="button">Log in</button></a>
                
@@ -141,6 +140,148 @@
         </div>
     </div>
     </section >
+    <section class="form col-ms container-fluid mb-5 row h-100 justify-content-center align-items-center">
+         <div class="row no-gutters">
+              <div class="col-lg-5 align-self-center">            
+                  <h2 style="color: rgb(160, 154, 147)">AN AWARD-WINNING SERVICE</h2>
+                  <h2 style="color: rgb(160, 154, 147)">250+ YEARS OF CUSTOMER TIME SAVED</h2>
+                  <p class="fs-2">What our customers have to say...</p>
+              </div>
+              <div class="col-lg-5 align-self-center">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide mr-auto" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+  </div>
+  <div class="carousel-inner shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="carousel-item active col-5" data-bs-interval="1000">
+        <div class="card mb-3" style="max-width: auto;">
+            <div class="row g-0 mr-3">
+              <div class="col-md-4 rounded-circle">
+                <img th:src="@{images/images (1).jpg}" class="img-fluid rounded-start" alt="customers image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Get A.</h5>
+                  <p class="card-text">I love how much time frees up for me to spend with my family. And now, with Covid,
+                    I’m very glad that I don’t have to go into the laundry room
+                    of our large condo building to do our wash each week.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+        <div class="card mb-3" style="max-width: auto;">
+            <div class="row g-0 mr-3">
+              <div class="col-md-4 rounded-circle">
+                <img th:src="@{/images/images (2).jpg}" class="img-fluid rounded-start" alt="customers image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Heni S.</h5>
+                  <p class="card-text">In such i will like to say thanks, for providing me to spend with my family. And now, with Covid,
+                    I’m very glad that I don’t have to go into the laundry room
+                    of our large condo building to do our wash each week.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="carousel-item">
+        <div class="card mb-3" style="max-width: auto;">
+            <div class="row g-0 mr-3">
+              <div class="col-md-4 rounded-circle">
+                <img th:src="@{/images/images (3).jpg}" class="img-fluid rounded-start" alt="customers image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Jack E.</h5>
+                  <p class="card-text">I love how much time frees up for me to spend with my family. And now, with Covid,
+                    I’m very glad that I don’t have to go into the laundry room
+                    of our large condo building to do our wash each week.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="carousel-item">
+        <div class="card mb-3" style="max-width: auto;">
+            <div class="row g-0 mr-3">
+              <div class="col-md-4 rounded-circle">
+                <img th:src="@{images/images (4).png}" class="img-fluid rounded-start" alt="customers image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Max U.</h5>
+                  <p class="card-text"> With Covid,
+                    I’m very glad that I don’t have to go into the laundry room
+                    of our large condo building to do our wash each week.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+     <div class="carousel-item">
+        <div class="card mb-3" style="max-width: auto;">
+            <div class="row g-0 mr-3">
+              <div class="col-md-4 rounded-circle">
+                <img th:src="@{/images/images (3).jpg}" class="img-fluid rounded-start" alt="customers image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Aman F.</h5>
+                  <p class="card-text">I love how much time frees up for me to spend with my family. I’m very glad that I don’t have to go into the laundry room
+                    of our large condo building to do our wash each week.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+              </div>
+         </div>
+
+
+    </section>
+</main>
+<footer class="mt-auto" style="background-color: #c8d8e4;">
+  <div class="container-fluid">
+  <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+      <a class="fs-2 p-3 btn btn-link" href="https://www.facebook.com/Getnet Adugna"><i class="fab fa-facebook"></i></a>
+      <a class="fs-2 p-3 btn btn-link" href="https://www.twitter.com/Getnet Adugna"><i class="fab fa-twitter"></i></a>
+      <a class="fs-2 p-3 btn btn-link" href="https://www.telegram.com/Getnet Adugna"><i class="fab fa-telegram"></i></a>
+      <a class="fs-2 p-3  text-warning btn btn-link" href="https://www.Gmail.com/Getnet Adugna"><i class="fas fa-envelope"></i></a>
+      <a class="fs-2 p-3  text-danger btn btn-link" href="https://www.instagram.com/Getnet Adugna"><i class="fab fa-instagram-square"></i></a>
+  </div>
+  <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+    <div class="d-flex flex-column col-auto">
+      <!-- <p class="col-auto" ><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p> -->
+      <p class="col-auto"><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link" th:href="@{/accessability}">Accessability</a></p>
+    <!-- </div>  -->
+    <!-- <div class="d-flex flex-column col-auto"> -->
+      <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link"th:href="@{/privacy}">Privacy</a></p>
+      <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link" th:href="@{/terms}">Terms</a></p>
+  <!-- </div> -->
+</div>
+  <p class="text-center  fs-5 pl-6 text-dark mt-1">Copyright &copy; 2022 AAU Laundry, Inc. All Rights Reserved</p>
+</div>
+</footer>
+    <script th:src="@{https://kit.fontawesome.com/0605e8c2de.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
     <section class="form col-ms container-fluid mb-5 row h-100 justify-content-center align-items-center">
          <div class="row no-gutters">
               <div class="col-lg-5 align-self-center">            
