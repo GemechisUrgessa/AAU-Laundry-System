@@ -1,4 +1,4 @@
-package com.aaulaundary.aau_laundary_system.Security;
+package com.web_project.aau_laundry_system.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

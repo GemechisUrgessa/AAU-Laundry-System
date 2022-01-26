@@ -1,6 +1,6 @@
-package com.aaulaundary.aau_laundary_system.Security;
+package com.web_project.aau_laundry_system.security;
 
-import com.aaulaundary.aau_laundary_system.Repositories.UserRepository;
+import com.web_project.aau_laundry_system.Repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
