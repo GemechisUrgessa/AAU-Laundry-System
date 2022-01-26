@@ -44,6 +44,8 @@ Users signing up for the system will be verified to ensure that they are student
   since the assumption is that the laundry will use a database filled with students Full names and Usernames as an ID of AAU Students ,which
   is if,provided and all the names and id's are filled on the record table the system will manage to secure only the ones whose 
   info is on the database to get registered.
+  
+  since biruk tassew and ysihak bazezew have been alrady registered as a sample student user, it is not possible to create a new account with their ID
 
   5, we have added 6 Cloth types and their price to the table cloth which can later be edited by the admin
   6, the update feature allows a user to update its peronal infos as well as the password at the same time. 
