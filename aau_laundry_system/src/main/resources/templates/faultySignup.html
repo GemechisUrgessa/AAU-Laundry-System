@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <title>Registration</title>
+</head>
+<body>
+    
+    <div class='container'>
+        <p>The info you have included has a problem,please fill the correct info</p>
+        <a th:href="@{/sign-up}">BACK TO SIGN UP PAGE</a>
+    </div>
+    <footer class="mt-auto" style="background-color: #c8d8e4;">
+      <div class="container-fluid">
+      <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+          <a class="fs-2 p-3 btn btn-link" href="https://www.facebook.com/Getnet Adugna"><i class="fab fa-facebook"></i></a>
+          <a class="fs-2 p-3 btn btn-link" href="https://www.twitter.com/Getnet Adugna"><i class="fab fa-twitter"></i></a>
+          <a class="fs-2 p-3 btn btn-link" href="https://www.telegram.com/Getnet Adugna"><i class="fab fa-telegram"></i></a>
+          <a class="fs-2 p-3  text-warning btn btn-link" href="https://www.Gmail.com/Getnet Adugna"><i class="fas fa-envelope"></i></a>
+          <a class="fs-2 p-3  text-danger btn btn-link" href="https://www.instagram.com/Getnet Adugna"><i class="fab fa-instagram-square"></i></a>
+      </div>
+      <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+        <div class="d-flex flex-column col-auto">
+          <!-- <p class="col-auto" ><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p> -->
+          <p class="col-auto"><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link" th:href="@{/accessability}">Accessability</a></p>
+        <!-- </div>  -->
+        <!-- <div class="d-flex flex-column col-auto"> -->
+          <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link"th:href="@{/privacy}">Privacy</a></p>
+          <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link" th:href="@{/terms}">Terms</a></p>
+      <!-- </div> -->
+    </div>
+      <p class="text-center  fs-5 pl-6 text-dark mt-1">Copyright &copy; 2022 AAU Laundry, Inc. All Rights Reserved</p>
+  </div>
+  </footer>
+
+
+</body>
