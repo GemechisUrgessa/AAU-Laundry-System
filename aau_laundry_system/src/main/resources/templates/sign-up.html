@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <title>Registration</title>
+
+    
+</head>
+<body class="d-flex flex-column min-vh-100" style="overflow-x:hidden; ">
+  <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: #c8d8e4;">
+        <div class="container-fluid ">
+            <a class="navbar-brand mx-2" th:href="@{/}"><img class='img-fluid rounded-circle' style="width:60px" th:src="@{images/logo.svg}" alt="Laundry logo"></a>
+            <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon pb-lg-2 "></span>
+            </button>
+        <div class="collapse navbar-collapse mt-3 container-fluid" id="navbarTogglerDemo01">
+            <ul class="nav nav-tabs nav-pills navbar-nav me-auto mb-4 mb-lg-0 ms-auto" style="width: auto;">
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action btn btn-link active" aria-current="page" th:href="@{/}" >Home</a>
+                </li>
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/profile}" >Profile</a>
+                </li>
+                <div th:if="${status}=='signedout'">
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/sign-up}"  >Register</a>
+                </li>
+              </div>
+                <li class="nav-item mx-3">
+                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/order}" >order</a>
+                </li>
+              </ul>
+             
+
+              <div th:switch="${status}">
+                <div th:case="loggedin">
+                  <div th:switch="${user.role}">
+                    <div th:case="ADMIN">
+                      <a th:href="@{\admin}"><button class="btn my-2 btn-outline-primary  text-dark " type="button">Admin DashBoard</button></a>
+    
+                    </div>
+                   
+    
+                  </div>
+                  <a th:href="@{\logout}"><button class="btn btn-outline-primary  text-dark " type="button">Logout</button></a>
+                </div>
+                <a th:case="signedout" th:href="@{\login}"><button class="btn btn-outline-primary  text-dark " type="button">Log in</button></a>
+               
+              </div>
+               
+        </div>
+        </div>
+    </nav>
+    <section class="form my-4 mx-3">
+        <div class="container mx-auto" style="width: auto">
+  <div class="row no-gutters">
+    <div class="col-lg-5">
+        <img class="img-fluid"  th:src="@{/images/image1.jpg}" alt>
+    </div>
+    <div class="col-lg-7">
+    <div class="container col-auto mt-5 " style="max-width: 600px; height: auto; ">
+      <div class="text-center my-3" th:switch="${message}">
+
+        <p class="alert alert-warning h4" th:case="'NOT FOUND'">Your ID Can Not Be Found</p>
+        <p class="alert alert-warning h4" th:case="'ONLY ID FOUND'">ID and Student Name Doesn't Match</p>
+        <p class="alert alert-warning h4" th:case="'ALREADY EXISTS'">Student ID Already Registered</p>
+        <p class="alert alert-success h4" th:case="'COMPLETE'">Regisration Completed</p>
+      </div>
+
+        <h1 class="text-center text-primary">SignUp here!</h1>
+        
+        <div class="row h-100 justify-content-center align-items-center">
+        <form th:object = "${student}" th:action="@{/sign-up}" method = "POST" >
+            <div class="form-row mt-3">
+                <div class="col-12 pt-lg-3 pl-lg-2 ">
+                    <div class="input-group mb-3 ">
+                        <input name='firstName' type="text" class="form-control col-12" th:field="*{firstName}" placeholder="Firstname" aria-label="username" aria-describedby="basic-addon1">
+                      </div>
+                      <p class = "alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+                     
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                  <div class="col-12 pt-lg-3 pl-lg-2 ">
+                      <div class="input-group mb-3 ">
+                          <input  type="text" class="form-control col-12" th:field="*{lastName}" placeholder="Lastname" aria-label="username" aria-describedby="basic-addon1">
+                        </div>
+                        <p class = "alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+                     
+                      </div>
+                  </div>
+          <div class="form-row mt-3">
+            <div class="col-12 pt-lg-3 pl-lg-2 ">
+                <div class="input-group mb-3 ">
+                    <input type="email" th:field= "*{email}" class="form-control col-12" placeholder="Email" aria-label="email" aria-describedby="basic-addon1">
+                  </div>
+                  <p class = "alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                     
+                </div>
+            </div>
+            <div class="form-row mt-3">
+                <div class="col-12 pt-lg-3 pl-lg-2 ">
+                    <div class="input-group mb-3 ">
+                        <input type="text" th:field= "*{username}" class="form-control col-12" placeholder="ID" aria-label="id" aria-describedby="basic-addon1">
+                      </div>
+                      <p class = "alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                     
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-12 pt-lg-3 pl-lg-2 ">
+                        <div class="input-group mb-3 ">
+                            <input type="text" th:field="*{phoneNumber}" class="form-control col-12" placeholder="Phone Number eg. 09..." aria-label="Phone Number" aria-describedby="basic-addon1">
+                          </div>
+                          <p class = "alert alert-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+                     
+                        </div>
+                    </div>
+                    <div class="form-row my-6">
+                      <div class="col-12 pt-lg-3 pl-lg-2">
+                          <div class="input-group mb-3">
+                              <input type="password" th:field= "*{password}" class="form-control " placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
+                            </div></div>
+                            <p class = "alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                      </div>
+            <div class="form-row my-6">
+            <div class="col-5 pt-lg-3 pl-lg-2">
+                <div class="input-group mb-3">
+                   <select th:field= "*{campus}" class = 'form-contro'>
+                     <option th:each = " campus: ${campuses}" th:text = "${campus}" th:value="${campus}"></option>
+                   </select>
+                  </div>
+                </div>
+            </div>
+            <div class="form-row my-12">
+            <div class="col-12 pt-lg-3 pl-lg-2">
+            <button type="submit" class="btn btn-primary btn-lg-7 btn-block col-12 mb-2">SignUp</button>
+        </div>
+        </div>
+          </form>
+        </div>
+      </div>
+    </div></div></div>
+        </section>
+        <footer class="mt-auto" style="background-color: #c8d8e4;">
+          <div class="container-fluid">
+          <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+              <a class="fs-2 p-3 btn btn-link" href="https://www.facebook.com/Getnet Adugna"><i class="fab fa-facebook"></i></a>
+              <a class="fs-2 p-3 btn btn-link" href="https://www.twitter.com/Getnet Adugna"><i class="fab fa-twitter"></i></a>
+              <a class="fs-2 p-3 btn btn-link" href="https://www.telegram.com/Getnet Adugna"><i class="fab fa-telegram"></i></a>
+              <a class="fs-2 p-3  text-warning btn btn-link" href="https://www.Gmail.com/Getnet Adugna"><i class="fas fa-envelope"></i></a>
+              <a class="fs-2 p-3  text-danger btn btn-link" href="https://www.instagram.com/Getnet Adugna"><i class="fab fa-instagram-square"></i></a>
+          </div>
+          <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+            <div class="d-flex flex-column col-auto">
+              <!-- <p class="col-auto" ><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p> -->
+              <p class="col-auto"><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link" th:href="@{/accessability}">Accessability</a></p>
+            <!-- </div>  -->
+            <!-- <div class="d-flex flex-column col-auto"> -->
+              <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link"th:href="@{/privacy}">Privacy</a></p>
+              <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link" th:href="@{/terms}">Terms</a></p>
+          <!-- </div> -->
+        </div>
+          <p class="text-center  fs-5 pl-6 text-dark mt-1">Copyright &copy; 2022 AAU Laundry, Inc. All Rights Reserved</p>
+      </div>
+      </footer>
+    <script th:src="@{https://kit.fontawesome.com/0605e8c2de.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
