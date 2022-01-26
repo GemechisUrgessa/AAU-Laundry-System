@@ -1,8 +1,8 @@
-package com.aaulaundary.aau_laundary_system.Repositories;
+package com.web_project.aau_laundry_system.Repositories;
 
 import java.util.List;
 
-import com.aaulaundary.aau_laundary_system.models.LaundaryOrder;
+import com.web_project.aau_laundry_system.models.LaundaryOrder;
 
 // import org.hibernate.metamodel.model.convert.spi.JpaAttributeConverter;
 import org.springframework.data.jpa.repository.JpaRepository;

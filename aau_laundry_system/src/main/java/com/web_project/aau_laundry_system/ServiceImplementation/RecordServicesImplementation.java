@@ -1,10 +1,10 @@
-package com.aaulaundary.aau_laundary_system.ServiceImplementation;
+package com.web_project.aau_laundry_system.ServiceImplementation;
 
 import java.util.List;
 
-import com.aaulaundary.aau_laundary_system.Repositories.RecordRepository;
-import com.aaulaundary.aau_laundary_system.Services.RecordService;
-import com.aaulaundary.aau_laundary_system.models.Record;
+import com.web_project.aau_laundry_system.Repositories.RecordRepository;
+import com.web_project.aau_laundry_system.Services.RecordService;
+import com.web_project.aau_laundry_system.models.Record;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

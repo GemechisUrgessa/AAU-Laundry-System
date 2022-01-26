@@ -1,7 +1,7 @@
-package com.aaulaundary.aau_laundary_system.Services;
+package com.web_project.aau_laundry_system.Services;
 import java.util.List;
 
-import com.aaulaundary.aau_laundary_system.models.Campus;
+import com.web_project.aau_laundry_system.models.Campus;
 
 public interface CampusService {
 

@@ -1,11 +1,11 @@
-package com.aaulaundary.aau_laundary_system.ServiceImplementation;
+package com.web_project.aau_laundry_system.ServiceImplementation;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.aaulaundary.aau_laundary_system.Repositories.CampusRepository;
-import com.aaulaundary.aau_laundary_system.Services.CampusService;
-import com.aaulaundary.aau_laundary_system.models.Campus;
+import com.web_project.aau_laundry_system.Repositories.CampusRepository;
+import com.web_project.aau_laundry_system.Services.CampusService;
+import com.web_project.aau_laundry_system.models.Campus;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

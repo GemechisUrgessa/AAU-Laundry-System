@@ -1,4 +1,4 @@
-package com.aaulaundary.aau_laundary_system.models;
+package com.web_project.aau_laundry_system.models;
 
 
 import javax.persistence.CascadeType;

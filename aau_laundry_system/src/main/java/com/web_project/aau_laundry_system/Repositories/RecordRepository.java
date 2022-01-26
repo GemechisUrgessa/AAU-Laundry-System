@@ -1,6 +1,6 @@
-package com.aaulaundary.aau_laundary_system.Repositories;
+package com.web_project.aau_laundry_system.Repositories;
 
-import com.aaulaundary.aau_laundary_system.models.Record;
+import com.web_project.aau_laundry_system.models.Record;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 // import org.springframework.stereotype.Repository;
