@@ -12,45 +12,65 @@
 
 <body class="d-flex flex-column min-vh-100" style="overflow-x:hidden; width: 100%;">
     <header>
-    <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: rgb(172, 205, 238);">
-        <div class="container-fluid ">
-            <a class="navbar-brand mx-2" href="#"><img src="images/image3.svg" alt="Laundry logo"></a>
-            <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon pb-lg-2 "></span>
-            </button>
-        <div class="collapse navbar-collapse mt-3 container-fluid" id="navbarTogglerDemo01">
-            <ul class="nav nav-tabs nav-pills navbar-nav me-auto mb-4 mb-lg-0 ms-auto" style="width: auto;">
-                <li class="nav-item mx-3">
-                  <a class="nav-link text-dark list-group-item-action btn btn-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item mx-3">
-                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item mx-3">
-                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item mx-3">
-                  <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" href="#" >Register</a>
-                </li>
-              </ul>
-                <button class="btn btn-outline-primary  text-dark " type="submit">Log in</button>
-        </div>
-        </div>
-    </nav></header>
+        <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: #c8d8e4;">
+            <div class="container-fluid ">
+                <a class="navbar-brand mx-2" th:href="@{/}"><img class='img-fluid rounded-circle' style="width:60px" th:src="@{images/logo.svg}" alt="Laundry logo"></a>
+                <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon pb-lg-2 "></span>
+                </button>
+            <div class="collapse navbar-collapse mt-3 container-fluid" id="navbarTogglerDemo01">
+                <ul class="nav nav-tabs nav-pills navbar-nav me-auto mb-4 mb-lg-0 ms-auto" style="width: auto;">
+                    <li class="nav-item mx-3">
+                      <a class="nav-link text-dark list-group-item-action btn btn-link " aria-current="page" th:href="@{/}" >Home</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                      <a class="nav-link text-dark list-group-item-action rounded active btn btn-link" th:href="@{/profile}" >Profile</a>
+                    </li>
+                    <div th:if="${status}=='signedout'">
+                    <li class="nav-item mx-3">
+                      <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/sign-up}"  >Register</a>
+                    </li>
+                  </div>
+                    <li class="nav-item mx-3">
+                      <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/order}" >order</a>
+                    </li>
+                  </ul>
+                 
+    
+                  <div th:switch="${status}">
+                    <div th:case="loggedin">
+                      <div th:switch="${user.role}">
+                        <div th:case="ADMIN">
+                          <a th:href="@{\admin}"><button class="btn my-2 btn-outline-primary  text-dark " type="button">Admin DashBoard</button></a>
+        
+                        </div>
+                       
+        
+                      </div>
+                      <a th:href="@{\logout}"><button class="btn btn-outline-primary  text-dark " type="button">Logout</button></a>
+                    </div>
+                    <a th:case="signedout" th:href="@{\login}"><button class="btn btn-outline-primary  text-dark " type="button">Log in</button></a>
+                   
+                  </div>
+                   
+            </div>
+            </div>
+        </nav>
+</header>
     <main>
   
     <div class="container-fluid" style="max-width: 1500px;">
     <h2 class="text-secondary mb-4">Profile</h2>
     <div class="row mb-3">
          <div class="col-lg-4">
-            <div class="card mb-3">
+            <!-- <div class="card mb-3">
                 <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="dogs/image2.jpeg" width="160" height="160" />
                     <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
                 </div>
-            </div>
+            </div> -->
             <div class="card shadow mb-4 my-3">
     <div class="card-header py-3">
-        <h6 class="text-primary fw-bold m-0">Delivery Reports</h6>
+        <h6 class="text-primary fw-bold m-0">Your Recent Orders</h6>
     </div>
     <div class="card-body">
         <table class="table table-striped table-hover">
@@ -76,21 +96,7 @@
          </div>
         
         <div class="col-lg-8">
-            <div class="row mb-3">
-                <!-- <div class="col">
-                    <div class="card textwhite bg-primary text-white shadow">
-                        <div class="card-body">
-                            <div class="row mb-2">
-                                <div class="col">
-                                    <p class="m-0">Performance</p>
-                                    <p class="m-0"><strong>65.2%</strong></p>
-                                </div>
-                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                            </div>
-                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i> 5% since last month</p>
-                        </div>
-                    </div> -->
-                <!-- </div> -->
+            <!-- <div class="row mb-3">
                 <div class="col">
                     <div class="card textwhite bg-light text-white shadow">
                         <div class="card-body mx-auto">
@@ -98,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col">
                     <div class="card shadow mb-3">
@@ -106,7 +112,7 @@
                             <p class="text-primary m-0 fw-bold">User Settings</p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form th:action = "@{/profile/update}" method = "POST" >
                                 <div class="row">
                                     <div class="row">
                                         <div class="col" style="min-width: 270px">
@@ -117,7 +123,7 @@
                                         </div>
                                     </div>
                                     <div class="col" style="min-width: 270px">
-                                        <div class="mb-3"><label class="form-label" for="Student ID"><strong>Student ID</strong></label><input id="Student ID" class="form-control" type="text" th:field="${user.username}" placeholder="UGR/78..." name="username" /></div>
+                                        <div class="mb-3"><label class="form-label" for="Student ID"><strong>Username (ID for students)</strong></label><input readonly id="Student ID" class="form-control border-0" type="text" th:field="${user.username}" placeholder="UGR/78..." name="username" /></div>
                                     </div>
                                     <div class="col" style="min-width: 270px">
                                         <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input id="email" th:field="${user.email}" class="form-control" type="email" placeholder="user@example.com" name="email" /></div>
@@ -129,10 +135,10 @@
                                         <div class="mb-3"><label class="form-label" for="phone"><strong>Phone Number</strong></label><input id="phone" th:field="${user.phoneNumber}"class="form-control" type="tel" placeholder="+251..." name="phone" /></div>
                                     </div>
                                 </div>
-                                 <div class="mb-3"><label class="form-label" for="password"><strong>Old Password</strong></label><input id="password" class="form-control" type="password" placeholder="*****" name="password" /></div>
+                    
                                 <div class="row">
                                     <div class="col">
-                                      <div class="mb-3"><label class="form-label" for="password"><strong>New Password</strong></label><input id="password" class="form-control" type="password" placeholder="*****" name="password" /></div>
+                                      <div class="mb-3"><label class="form-label" for="password"><strong>New Password</strong></label><input th:field="${user.password}" id="password" class="form-control" type="password" placeholder="*****" name="password" /></div>
                                     </div>
                                    
                                 </div>
@@ -152,28 +158,30 @@
 
     <!-- ........................................................................ -->
     </main>
-    <footer class="mt-auto" style="background-color: rgb(172, 205, 238);">
-      <div class="container-fluid">
-      <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
-          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fab fa-facebook"></i></a>
-          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fab fa-twitter"></i></a>
-          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fab fa-telegram"></i></a>
-          <a class="fs-2 text-secondary p-3 btn btn-link" href="#"><i class="fas fa-envelope"></i></a>
-          <a class="fs-2 p-3  text-secondary btn btn-link" href="#"><i class="fab fa-instagram-square"></i></a>
+    <footer class="mt-auto" style="background-color: #c8d8e4;">
+        <div class="container-fluid">
+        <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+            <a class="fs-2 p-3 btn btn-link" href="https://www.facebook.com/Getnet Adugna"><i class="fab fa-facebook"></i></a>
+            <a class="fs-2 p-3 btn btn-link" href="https://www.twitter.com/Getnet Adugna"><i class="fab fa-twitter"></i></a>
+            <a class="fs-2 p-3 btn btn-link" href="https://www.telegram.com/Getnet Adugna"><i class="fab fa-telegram"></i></a>
+            <a class="fs-2 p-3  text-warning btn btn-link" href="https://www.Gmail.com/Getnet Adugna"><i class="fas fa-envelope"></i></a>
+            <a class="fs-2 p-3  text-danger btn btn-link" href="https://www.instagram.com/Getnet Adugna"><i class="fab fa-instagram-square"></i></a>
+        </div>
+        <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+          <div class="d-flex flex-column col-auto">
+            <!-- <p class="col-auto" ><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p> -->
+            <p class="col-auto"><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link" th:href="@{/accessability}">Accessability</a></p>
+          <!-- </div>  -->
+          <!-- <div class="d-flex flex-column col-auto"> -->
+            <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link"th:href="@{/privacy}">Privacy</a></p>
+            <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link" th:href="@{/terms}">Terms</a></p>
+        <!-- </div> -->
       </div>
-      <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
-        <div class="d-flex flex-column col-auto">
-          <p class="col-auto" ><a class="text-dark list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p>
-          <p class="col-auto"><a class="text-dark list-group-item-action rounded-pill btn btn-link"href="#">Contact Us</a></p>
-        </div> <div class="d-flex flex-column col-auto">
-          <p class="col-auto"><a class="text-dark list-group-item-action rounded-pill btn btn-link"href="#">Privacy</a></p>
-          <p class="col-auto"><a class="text-dark list-group-item-action rounded-pill btn btn-link" href="#">Terms</a></p>
-      </div></div>
-      <p class="text-center pl-6 text-dark mt-1">Copyright &copy; 2022 Rinse, Inc. All Rights Reserved</p>
-  </div>
-  </footer>
-    <script src="https://kit.fontawesome.com/0605e8c2de.js" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+        <p class="text-center  fs-5 pl-6 text-dark mt-1">Copyright &copy; 2022 AAU Laundry, Inc. All Rights Reserved</p>
+    </div>
+    </footer>
+    <script th:src="@{https://kit.fontawesome.com/0605e8c2de.js}" crossorigin="anonymous"></script>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
    
