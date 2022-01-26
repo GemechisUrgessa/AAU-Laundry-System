@@ -12,6 +12,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,7 +24,7 @@ import lombok.ToString;
 @Getter
 @Entity
 @ToString
-public class User{
+public class User implements UserDetails {
     @Id
     @NotNull(message = "Username can not be blank")
     private String username; // student ID
@@ -52,7 +56,33 @@ public class User{
         this.phoneNumber = phoneNumber;
     }
 
- 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+this.role.toUpperCase()));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+         return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    
+
 
 
     
