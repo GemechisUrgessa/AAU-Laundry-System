@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/tg.ico">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Contact us</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100" style="overflow-x:hidden; width: 100%;">
+   <header> <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: #c8d8e4;">
+    <div class="container-fluid ">
+        <a class="navbar-brand mx-2" th:href="@{/}"><img class='img-fluid rounded-circle' style="width:60px" th:src="@{images/logo.svg}" alt="Laundry logo"></a>
+        <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon pb-lg-2 "></span>
+        </button>
+    <div class="collapse navbar-collapse mt-3 container-fluid" id="navbarTogglerDemo01">
+        <ul class="nav nav-tabs nav-pills navbar-nav me-auto mb-4 mb-lg-0 ms-auto" style="width: auto;">
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action btn btn-link active" aria-current="page" th:href="@{/}" >Home</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/profile}" >Profile</a>
+            </li>
+            <div th:if="${status}=='signedout'">
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/sign-up}"  >Register</a>
+            </li>
+          </div>
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/order}" >order</a>
+            </li>
+          </ul>
+         
+
+          <div th:switch="${status}">
+            <div th:case="loggedin">
+              <div th:switch="${user.role}">
+                <div th:case="ADMIN">
+                  <a th:href="@{\admin}"><button class="btn my-2 btn-outline-primary  text-dark " type="button">Admin DashBoard</button></a>
+
+                </div>
+               
+
+              </div>
+              <a th:href="@{\logout}"><button class="btn btn-outline-primary  text-dark " type="button">Logout</button></a>
+            </div>
+            <a th:case="signedout" th:href="@{\login}"><button class="btn btn-outline-primary  text-dark " type="button">Log in</button></a>
+           
+          </div>
+           
+    </div>
+    </div>
+</nav></header>
+   <main >
+     <div class="container">
+       <h1>Terms and conditions</h1>
+       <p>Website Visitors
+To enhance your online experience Portfolio uses “cookies,” which are small pieces of information stored in a user’s browser giving that user a unique identification. Portfolio uses cookies to help identify and track visitors and their usage of our website. We may insert cookies into your browser to identify you as a previous user. Cookies contain non-personally identifying information. All cookies are established on a per session basis and are not permanently stored on your machine. By continuing to navigate our website without changing your cookie settings, you acknowledge and agree to Portfolio’s use of cookies.
+External 
+<h2>Linksh2</h2>
+The security of your personal information is important to us, and we have implemented security procedures to protect the personal information that you provide us. However, no method of transmitting or storing electronic data is every completely secure. While we strive to protect your personal information, we cannot guarantee its absolute security.
+<h2>IP Addressh2</h2>
+Portfolio Consumer Privacy Notice — California Consumers The California Consumer Privacy Act requires that we inform you about the categories of personal information that are collected about you and the purposes in which it is used. This information is collected from you or the selling dealer at the time of purchase, during the administration process or when a claim is filed. The categories of information we may collect depends on the type of product purchased and may include identifying information such as:
+Cookiesh
+Name
+Postal address
+Security
+Telephone number
+Email address
+Vehicle information
+Financial contract terms
+This personal information collected is used for business purposes, such as processing your contract, claims processing and obligations covered under this agreement. We respect your privacy regarding any personal information we may collect and have security procedures in place to protect that information. This website is equipped with a third-party program that uses provider data to match IP addresses with company names. We are not able to detect nor share your personally identifiable information; however, we may be provided with your company name and location and any publicly available web and email addresses associated with your company name. We may use this information to contact you about your interest in Portfolio.</p>
+     </div>
+   </main>
+   <footer class="mt-auto" style="background-color: #c8d8e4;">
+    <div class="container-fluid">
+    <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+        <a class="fs-2 p-3 btn btn-link" href="https://www.facebook.com/Getnet Adugna"><i class="fab fa-facebook"></i></a>
+        <a class="fs-2 p-3 btn btn-link" href="https://www.twitter.com/Getnet Adugna"><i class="fab fa-twitter"></i></a>
+        <a class="fs-2 p-3 btn btn-link" href="https://www.telegram.com/Getnet Adugna"><i class="fab fa-telegram"></i></a>
+        <a class="fs-2 p-3  text-warning btn btn-link" href="https://www.Gmail.com/Getnet Adugna"><i class="fas fa-envelope"></i></a>
+        <a class="fs-2 p-3  text-danger btn btn-link" href="https://www.instagram.com/Getnet Adugna"><i class="fab fa-instagram-square"></i></a>
+    </div>
+    <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+      <div class="d-flex flex-column col-auto">
+        <!-- <p class="col-auto" ><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p> -->
+        <p class="col-auto"><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link" th:href="@{/accessability}">Accessability</a></p>
+      <!-- </div>  -->
+      <!-- <div class="d-flex flex-column col-auto"> -->
+        <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link"th:href="@{/privacy}">Privacy</a></p>
+        <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link" th:href="@{/terms}">Terms</a></p>
+    <!-- </div> -->
+  </div>
+    <p class="text-center  fs-5 pl-6 text-dark mt-1">Copyright &copy; 2022 AAU Laundry, Inc. All Rights Reserved</p>
+</div>
+</footer>
+<script th:src="@{https://kit.fontawesome.com/0605e8c2de.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

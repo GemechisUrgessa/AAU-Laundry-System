@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/tg.ico">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Contact us</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100" style="overflow-x:hidden; width: 100%;">
+   <header> <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: #c8d8e4;">
+    <div class="container-fluid ">
+        <a class="navbar-brand mx-2" th:href="@{/}"><img class='img-fluid rounded-circle' style="width:60px" th:src="@{images/logo.svg}" alt="Laundry logo"></a>
+        <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon pb-lg-2 "></span>
+        </button>
+    <div class="collapse navbar-collapse mt-3 container-fluid" id="navbarTogglerDemo01">
+        <ul class="nav nav-tabs nav-pills navbar-nav me-auto mb-4 mb-lg-0 ms-auto" style="width: auto;">
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action btn btn-link active" aria-current="page" th:href="@{/}" >Home</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/profile}" >Profile</a>
+            </li>
+            <div th:if="${status}=='signedout'">
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/sign-up}"  >Register</a>
+            </li>
+          </div>
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/order}" >order</a>
+            </li>
+          </ul>
+         
+
+          <div th:switch="${status}">
+            <div th:case="loggedin">
+              <div th:switch="${user.role}">
+                <div th:case="ADMIN">
+                  <a th:href="@{\admin}"><button class="btn my-2 btn-outline-primary  text-dark " type="button">Admin DashBoard</button></a>
+
+                </div>
+               
+
+              </div>
+              <a th:href="@{\logout}"><button class="btn btn-outline-primary  text-dark " type="button">Logout</button></a>
+            </div>
+            <a th:case="signedout" th:href="@{\login}"><button class="btn btn-outline-primary  text-dark " type="button">Log in</button></a>
+           
+          </div>
+           
+    </div>
+    </div>
+</nav></header>
+   <main >
+       <div class="container">
+           <div class="">
+               <h1>Privacy</h1>
+               <p>It is Portfolio’s policy to respect your privacy regarding any information we may collect. We share your concerns about privacy and have created this privacy policy (“Privacy Policy”)
+                    to demonstrate our firm commitment. The following discloses what information we gather on our website, how we use this information, and under what circumstances we may disclose the information to a third party.
+                     This Privacy Policy applies to information we collect through the website. See Portfolio Consumer Privacy Notice — California Consumers (below) for details on Portfolio’s commitment to the California Consumer Protection Act. 
+                     Collection of Personal Information We collect personal information that identifies you such as name, postal address and email address (“personal information”). We also utilize a third party to match IP address with company names.
+                      We receive and store this information, including any submissions that you make. We may use the personal information collected from visitors in the following ways: To respond to an inquiry. To send you notifications about your accounts or transactions with us.
+                       To analyze our business and use of our website to enhance our site, develop new features, products or services. To contact you to discuss your interest in Portfolio. This personal information may be shared with our affiliates only when necessary to perform services on your behalf.
+                        We do not knowingly collect information from children under the age of 13. Should we learn that a child under the age of 13 has provided us with personal information, we will delete that information from our database. As a Portfolio client, sharing information with selected third parties, such as companies who help service the Portfolio program’s clients and dealerships,
+                         may be necessary. Portfolio will never sell or rent lists of our clients, our client’s professional advisors or client customer’s information. Portfolio may disclose information if legally required to do so to comply with a legal process. Like most website operators Portfolio collects non-personally identifying information that web browsers and servers typically make available, such as browser type, language preference, referring site and date and time of visitors requests. Our purpose in collecting this information is to help us better understand how Portfolio’s visitors use the website. Portfolio’s site may provide links to other websites, including those of Portfolio’s affiliates, as well as third party websites. Unless expressly stated, Portfolio does not control these websites and this Privacy Policy does not apply. You should proceed to these external websites at your own risk and review the privacy policy of the external website for details on their policy. We log all connections to our web servers. These logs include your IP address which is not personally identifying information, but general information about your location, connection to the Internet, and your internet service provider. We use your IP address to help diagnose problems with our server and to administer the site. We also use provider data to match IP addresses with company names. While we do not detect or share personally identifiable information, we may match your IP address with company name, location and any publicly available web and email address associated with your company name. 
+                   Additionally, we will use your IP address to track your navigation of the site and your navigation history may be used in current and future marketing efforts.</p>
+           </div>
+       </div>
+   </main>
+   <footer class="mt-auto" style="background-color: #c8d8e4;">
+    <div class="container-fluid">
+    <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+        <a class="fs-2 p-3 btn btn-link" href="https://www.facebook.com/Getnet Adugna"><i class="fab fa-facebook"></i></a>
+        <a class="fs-2 p-3 btn btn-link" href="https://www.twitter.com/Getnet Adugna"><i class="fab fa-twitter"></i></a>
+        <a class="fs-2 p-3 btn btn-link" href="https://www.telegram.com/Getnet Adugna"><i class="fab fa-telegram"></i></a>
+        <a class="fs-2 p-3  text-warning btn btn-link" href="https://www.Gmail.com/Getnet Adugna"><i class="fas fa-envelope"></i></a>
+        <a class="fs-2 p-3  text-danger btn btn-link" href="https://www.instagram.com/Getnet Adugna"><i class="fab fa-instagram-square"></i></a>
+    </div>
+    <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+      <div class="d-flex flex-column col-auto">
+        <!-- <p class="col-auto" ><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p> -->
+        <p class="col-auto"><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link" th:href="@{/accessability}">Accessability</a></p>
+      <!-- </div>  -->
+      <!-- <div class="d-flex flex-column col-auto"> -->
+        <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link"th:href="@{/privacy}">Privacy</a></p>
+        <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link" th:href="@{/terms}">Terms</a></p>
+    <!-- </div> -->
+  </div>
+    <p class="text-center  fs-5 pl-6 text-dark mt-1">Copyright &copy; 2022 AAU Laundry, Inc. All Rights Reserved</p>
+</div>
+</footer>
+<script th:src="@{https://kit.fontawesome.com/0605e8c2de.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

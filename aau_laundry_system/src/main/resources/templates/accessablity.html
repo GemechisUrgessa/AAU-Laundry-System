@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/tg.ico">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Contact us</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100" style="overflow-x:hidden; width: 100%;">
+   <header> <nav class="navbar navbar-expand-lg navbar-light row col-ms"style="background-color: #c8d8e4;">
+    <div class="container-fluid ">
+        <a class="navbar-brand mx-2" th:href="@{/}"><img class='img-fluid rounded-circle' style="width:60px" th:src="@{images/logo.svg}" alt="Laundry logo"></a>
+        <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon pb-lg-2 "></span>
+        </button>
+    <div class="collapse navbar-collapse mt-3 container-fluid" id="navbarTogglerDemo01">
+        <ul class="nav nav-tabs nav-pills navbar-nav me-auto mb-4 mb-lg-0 ms-auto" style="width: auto;">
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action btn btn-link active" aria-current="page" th:href="@{/}" >Home</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/profile}" >Profile</a>
+            </li>
+            <div th:if="${status}=='signedout'">
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/sign-up}"  >Register</a>
+            </li>
+          </div>
+            <li class="nav-item mx-3">
+              <a class="nav-link text-dark list-group-item-action rounded-pill btn btn-link" th:href="@{/order}" >order</a>
+            </li>
+          </ul>
+         
+
+          <div th:switch="${status}">
+            <div th:case="loggedin">
+              <div th:switch="${user.role}">
+                <div th:case="ADMIN">
+                  <a th:href="@{\admin}"><button class="btn my-2 btn-outline-primary  text-dark " type="button">Admin DashBoard</button></a>
+
+                </div>
+               
+
+              </div>
+              <a th:href="@{\logout}"><button class="btn btn-outline-primary  text-dark " type="button">Logout</button></a>
+            </div>
+            <a th:case="signedout" th:href="@{\login}"><button class="btn btn-outline-primary  text-dark " type="button">Log in</button></a>
+           
+          </div>
+           
+    </div>
+    </div>
+</nav></header>
+   <main >
+       <div class="container">
+           <h1>Accessability</h1>
+        <p>What’s covered in these terms We know it’s tempting to skip these Terms of Service, but it’s important to establish what you can expect from us as you use Google services, and what we expect from you. These Terms of Service reflect the way Google’s business works, the laws that apply to our company, and certain things we’ve always believed to be true. As a result, these Terms of Service help define Google’s relationship with you as you interact with our services. For example, these terms include the following topic headings: What you can expect from us, which describes how we provide and develop our services What we expect from you, which establishes certain rules for using our services Content in Google services, which describes the intellectual property rights to the content you find in our services — whether that content belongs to you, Google, or others In case of problems or disagreements, which describes other legal rights you have, and what to expect in case someone violates these terms Understanding these terms is important because, by using our services, you’re agreeing to these terms. Besides these terms, we also publish a Privacy Policy. Although it’s not part of these terms, we encourage you to read it to better understand how you can update, manage, export, and delete your information. Service provider Google services are provided by, and you’re contracting with: ETH organized under the laws of the State of ETH, and operating under the laws of the ETH 1600 Amphitheatre Parkway Mountain View, California 94043 USA Age requirements If you’re under the age required to manage your own Google Account, you must have your parent or legal guardian’s permission to use a Google Account. Please have your parent or legal guardian read these terms with you. If you’re a parent or legal guardian, and you allow your child to use the services, then these terms apply to you and you’re responsible for your child’s activity on the services. Some Google services have additional age requirements as described in their service-specific additional terms and policiY.</p>
+       </div>
+   </main>
+   <footer class="mt-auto" style="background-color: #c8d8e4;">
+    <div class="container-fluid">
+    <div class="mx-auto text-center" style="max-width: 700px; border-top: 2px solid blueviolet;">
+        <a class="fs-2 p-3 btn btn-link" href="https://www.facebook.com/Getnet Adugna"><i class="fab fa-facebook"></i></a>
+        <a class="fs-2 p-3 btn btn-link" href="https://www.twitter.com/Getnet Adugna"><i class="fab fa-twitter"></i></a>
+        <a class="fs-2 p-3 btn btn-link" href="https://www.telegram.com/Getnet Adugna"><i class="fab fa-telegram"></i></a>
+        <a class="fs-2 p-3  text-warning btn btn-link" href="https://www.Gmail.com/Getnet Adugna"><i class="fas fa-envelope"></i></a>
+        <a class="fs-2 p-3  text-danger btn btn-link" href="https://www.instagram.com/Getnet Adugna"><i class="fab fa-instagram-square"></i></a>
+    </div>
+    <div class="container my-2 d-flex flex-wrap mx-auto row h-100 justify-content-center align-items-center">
+      <div class="d-flex flex-column col-auto">
+        <!-- <p class="col-auto" ><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link " href="#">About Us</a></p> -->
+        <p class="col-auto"><a class="text-dark text-decoration-none fs-5 list-group-item-action rounded-pill btn btn-link" th:href="@{/accessability}">Accessability</a></p>
+      <!-- </div>  -->
+      <!-- <div class="d-flex flex-column col-auto"> -->
+        <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link"th:href="@{/privacy}">Privacy</a></p>
+        <p class="col-auto"><a class="text-dark  fs-5 text-decoration-none list-group-item-action rounded-pill btn btn-link" th:href="@{/terms}">Terms</a></p>
+    <!-- </div> -->
+  </div>
+    <p class="text-center  fs-5 pl-6 text-dark mt-1">Copyright &copy; 2022 AAU Laundry, Inc. All Rights Reserved</p>
+</div>
+</footer>
+<script th:src="@{https://kit.fontawesome.com/0605e8c2de.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
