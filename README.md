@@ -20,7 +20,36 @@ Users signing up for the system will be verified to ensure that they are student
  =>The system will provide notification for the users when their laundry is done.
  =>The users can provide comments and suggestions.
  =>The admin is the one with the full credentials to create, update and delete data from the database. 
+ 
+ General overview of the website 
+  1, for the website we use database schema with name "aaulaundry" and password of 43410@GMl
+  2, We have created two admins with username for admin one as "adminOne" and for admin two as "adminTwo".
+     For admin one the password is 123456 and for admin two the password is 654321
+  3, we have created two student accounts with ID "UGR/2004/12" and "UGR/1131/12" and password of "password" for each.
+  4, the website allows only registration of AAU students, for that purpose we have created a sample table name "record"
+     to store sample Students IDs with their name. A student can only register if he/she entered their ID along with 
+     the correct name of the student that is stored in the record table.
+     As a sample we have added 8 students with their ID and Name in the record table, the sample student  entery is as follows:
+    
+       1  ABEMELECH MESFIN   UGR/3257/12      
+       2  BAHAILU ABERA      UGR/3464/12  
+       3  Bereket ASNAKE     UGR/9574/12  
+       4  BIRUK TASSEW       UGR/2004/12  
+       5  EDEN TADDESE       UGR/5256/12   
+       6  KIDUS SINTAYEHU    UGR/8503/12     
+       7  SIMON MEKONNEN     UGR/9508/12  
+       8  YSIHAK BAZEZEW     UGR/1131/12  
 
+
+  since the assumption is that the laundry will use a database filled with students Full names and Usernames as an ID of AAU Students ,which
+  is if,provided and all the names and id's are filled on the record table the system will manage to secure only the ones whose 
+  info is on the database to get registered.
+
+  5, we have added 6 Cloth types and their price to the table cloth which can later be edited by the admin
+  6, the update feature allows a user to update its peronal infos as well as the password at the same time. 
+  6, we have used command line runner interface to add the above sample datas to the database table
+ 
+ 
 #Group members:-
 Name                            ID                            Section
 1. MELAT ERMIYAS            UGR/8994/12                      Section 3
