@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <title>Order total price</title>
+
+    
+</head>
+<body>
+
+
+    <div class="container card">
+        <p class="h3 alert alert-success">Order Submitted Sucessfully</p>
+        <p class="h3"th:text="'the total price is '+${total}+' ETB'"></p>
+        <a style="text-decoration: none;" th:href="@{/}" class="btn btn-primary">Back To Home</a>
+    </div>
+    
+    
+</body>
